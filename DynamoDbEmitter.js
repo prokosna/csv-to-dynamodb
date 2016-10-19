@@ -32,9 +32,9 @@ class DynamoDbEmitter {
     return new Promise((resolve, reject) => {
       this.dynamo.batchWrite(params, (err, res) => {
         if (err) {
-          reject(err);
+          reject(JSON.stringify(err));
         }
-        resolve(res);
+        resolve(JSON.stringify(res));
       });
     });
   }
