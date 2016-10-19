@@ -1,0 +1,32 @@
+{
+  "name": "csv-to-dynamodb",
+  "version": "1.0.0",
+  "description": "Read and parse csv, then bulk load to DynamoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prokosna/csv-to-dynamodb.git"
+  },
+  "author": "prokosna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prokosna/csv-to-dynamodb/issues"
+  },
+  "homepage": "https://github.com/prokosna/csv-to-dynamodb#readme",
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  },
+  "dependencies": {
+    "async": "^2.1.2",
+    "aws-sdk": "^2.6.10",
+    "csv-parser": "^1.11.0",
+    "readline": "^1.3.0"
+  }
+}
