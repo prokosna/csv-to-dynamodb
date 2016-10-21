@@ -27,7 +27,13 @@ class Buffer {
   }
 
   flushAndClear() {
-    const records = this.buffer.concat();
+    const records = this.buffer.map(record => (
+    {
+      PutRequest: {
+        Item: record,
+      },
+    }
+    ));
     this.clear();
     console.log(`total flushed records count: ${this.totalCount}`);
     return records;

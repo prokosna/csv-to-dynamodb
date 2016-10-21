@@ -15,14 +15,7 @@ class DynamoDbEmitter {
     // TODO implement
   }
 
-  emit(records) {
-    const items = records.map(record => (
-      {
-        PutRequest: {
-          Item: record,
-        },
-      })
-    );
+  emit(items) {
     const params = {
       RequestItems: {
         [this.tableName]: items,
