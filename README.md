@@ -4,13 +4,13 @@ Just a test code.
 
 ## Features
 
-- Retry UnprocessedItems returned by DynamoDB
+* Retry UnprocessedItems returned by DynamoDB
 
-- Adjust emit interval time according to frequency of retrying
+* Adjust emit interval time according to frequency of retrying
 
 ## Usage
 
-Fill out ./config/default.json.
+* Fill out ./config/default.json.
 
 Carefully set parameters of 'emitSize' and 'defaultEmitIntervalMillis' according to your record size and DynamoDB writing capacity.
 
@@ -41,13 +41,13 @@ If you have plenty capacity, interval time is shortened automatically.
 
 ```
 
-Debug run
+* Debug run
 
 ```
 $ NODE_ENV=development node index.js fileName.csv
 ```
 
-Run
+* Run
 
 ```
 $ node index.js fileName.csv
