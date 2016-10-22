@@ -3,8 +3,6 @@ class Buffer {
     /** @private */
     this.buffer = [];
     /** @private */
-    this.totalCount = 0;
-    /** @private */
     this.maxSize = size;
   }
 
@@ -18,7 +16,6 @@ class Buffer {
       return;
     }
 
-    this.totalCount += 1;
     this.buffer.push(data);
   }
 
@@ -28,14 +25,13 @@ class Buffer {
 
   flushAndClear() {
     const records = this.buffer.map(record => (
-    {
-      PutRequest: {
-        Item: record,
-      },
-    }
-    ));
+      {
+        PutRequest: {
+          Item: record,
+        },
+      })
+    );
     this.clear();
-    console.log(`total flushed records count: ${this.totalCount}`);
     return records;
   }
 }

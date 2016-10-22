@@ -1,4 +1,5 @@
 const aws = require('aws-sdk');
+const consoleWriter = require('./consoleWriter');
 
 class DynamoDbEmitter {
   constructor(tableName) {
@@ -11,8 +12,14 @@ class DynamoDbEmitter {
     this.tableName = tableName;
   }
 
-  createTable() {
-    // TODO implement
+  static wrapItemsDynamoRequest(items) {
+    return items.map(item => (
+      {
+        PutRequest: {
+          Item: item,
+        },
+      })
+    );
   }
 
   emit(items) {
@@ -21,6 +28,11 @@ class DynamoDbEmitter {
         [this.tableName]: items,
       },
     };
+
+    if (process.env.NODE_ENV === 'development') {
+      consoleWriter.log(`debug request: ${JSON.stringify(params)}`);
+      return Promise.resolve(JSON.stringify({ UnprocessedItems: {} }));
+    }
 
     return new Promise((resolve, reject) => {
       this.dynamo.batchWrite(params, (err, res) => {
